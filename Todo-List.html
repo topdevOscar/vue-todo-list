@@ -34,7 +34,7 @@
           type="checkbox"
           v-model="allDone"
         />
-        <label for="toggle-all"></label>
+        <label for = "toggle-all"></label>
         <ul class="todo-list">
           <li
             v-for="todo in filteredTodos"
@@ -44,14 +44,19 @@
           >
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed" />
-              <label @dblclick="editTodo(todo)">{{todo.title}}</label>
-              <button class="destroy" @click="removeTOdo(todo)"></button>
+              <label 
+                @dblclick="editTodo(todo)"
+                
+                >
+                {{todo.title}}
+              </label>
+              <button class="destroy" @click="removeTodo(todo)"></button>
             </div>
             <input
               class="edit"
               type="text"
               v-model="todo.title"
-              v-todo-focus="todo == editedTodo"
+              v-todo-focus = " todo == editedTodo"
               @blur="doneEdit(todo)"
               @keyup.enter="doneEdit(todo)"
               @keyup.esc="cancelEdit(todo)"
@@ -155,7 +160,7 @@
           remaining: function () {
             return filters.active(this.todos).length;
           },
-          allDone: {
+        allDone: {
             get: function () {
               return this.remaining === 0;
             },
@@ -199,7 +204,7 @@
           },
 
           doneEdit: function (todo) {
-            if (!this.editedTOdo) {
+            if (!this.editedTodo) {
               return;
             }
             this.editedTodo = null;
@@ -219,7 +224,7 @@
           },
         },
 
-        // a custom directive to wati for the DOM to be updated
+        // a custom directive to wait  for the DOM to be updated
         directives: {
           'todo-focus': function (el, binding) {
             if (binding.value) {
